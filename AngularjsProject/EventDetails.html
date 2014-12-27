@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <title>Event Registration</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="/js/app.js"> </script>
+    <script src="/Service/EventData.js"></script>
+    <script src="/js/controller/EventController.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <ul class="nav">
+                
+            </ul>
+        </div>
+
+        <div ng-controller="EventController" style="padding-left:20px;padding-right: 20px">
+            <img src="{{event.imageUrl}}" alt="{{event.name}}"/>
+            <button type="button" ng-click="scrollToSession()">Scroll</button>
+            <div class="row">
+                <div >
+                    <h2>{{event.name}}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <strong>Date :</strong>{{event.date}}<br />
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <strong>Time :</strong>{{event.time}}
+                </div>
+            </div>
+            <div>
+                <address>
+                    <strong>Address :</strong>
+                    {{event.location.address}}
+                    {{event.location.city}}
+                </address>
+            </div>
+            
+            <hr/>
+            <h3>Sessions</h3>
+            <ul class="thumbnail">
+                <li ng-repeat="session in event.sessions | orderBy:sortorder" id="session{{session.id}}">
+                    {{session.name}}
+                    <div style="margin-top:-10px">
+                        <h6>
+                            {{session.creatorName}}<br />
+
+                        </h6>
+                    </div>
+                    <div>
+                        Vote Count: {{session.upVoteCount}} <br />
+                        <button type="button" ng-click="upVoteSession(session)">Up-Vote</button>
+                        <button type="button" ng-click="downVoteSession(session)">Down-Vote</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            
+    </div>
+</body>
+</html>

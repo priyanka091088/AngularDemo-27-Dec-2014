@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <title>Cache Sample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="/js/controller/CacheSampleController.js"></script>
+
+</head>
+<body>
+    <div ng-controller="CacheSampleController" style="padding: 20px">
+        Key:<input type="text" ng-model="key" />
+        Value: <input type="text" ng-model="value" />
+        <button type="button" class="btn" ng-click="addToCache(key,value)">Add To Cache</button>
+        <span>{{Msg}} </span>
+        <br />
+        <br />
+        <input type="text" ng-model="keyToRead" /><br />
+        <h3>Value from Cache :</h3>
+        <label ng-model="{{readFromCache(keyToRead)}}"></label>
+        <span>{{readMsg}} </span>
+        <h3>Cache Stats: </h3>
+        <label ng-model="{{getCacheStats()}}"></label>
+        <span>{{getCacheMsg}} </span>
+
+    </div>
+</body>
+</html>

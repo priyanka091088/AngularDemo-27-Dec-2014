@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="uft-8" />
+    <title>Event Registration </title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="/js/controller/EditProfileController.js"></script>
+    <script src="/Service/GravatarUrlBuilder.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="EditProfileController">
+        <form name="profileForm">
+
+            <div class="row">
+                <div>
+                    <img ng-src="{{getGravatarUrl(user.emailAddress)}}" />
+                </div>
+
+                <div>
+                    <fieldset>
+                        <label for="userName">User Name : </label>
+                        <input id="userName" required type="text" placeholder="UserName" ng-model="user.username" />
+
+                        <br />
+                        <br />
+                        <label for="password">Password :</label>
+                        <input id="password" required type="password" placeholder="Password" ng-model="user.password" />
+                    </fieldset>
+
+                    <div style="margin-top: 15px">
+                        <fieldset>
+                            <label for="name">Name :</label>
+                            <input id="name" type="text" placeholder="Name" ng-model="user.name" />
+
+                            <br />
+                            <br />
+                            <label for="emailAddress">Email :</label>
+                            <input id="emailAddress" type="email" placeholder="Email" ng-model="user.emailAddress" />
+                        </fieldset>
+                    </div>
+
+                    <button type="button">Cancel</button>
+                    <button type="button">Save</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    
+    <div class="container" ng-controller="CheckHttpService">
+        <p>The ID is {{greeting.id}}</p>
+        <p> The content is {{greeting.content}}</p>
+    </div>
+
+</body>
+</html>
